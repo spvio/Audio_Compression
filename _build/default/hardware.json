@@ -1,8 +1,247 @@
 {
   "creator": "Yosys 0.57+178 (git sha1 93dca50b9, x86_64-w64-mingw32-g++ 13.2.1 -O3)",
   "modules": {
+    "$__ABC9_DELAY": {
+      "attributes": {
+        "abc9_box_id": "00000000000000000000000000000011",
+        "blackbox": "00000000000000000000000000000001",
+        "abc9_box": "00000000000000000000000000000001",
+        "cells_not_processed": "00000000000000000000000000000001",
+        "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:2.1-7.10"
+      },
+      "parameter_default_values": {
+        "DELAY": "00000000000000000000000000000000"
+      },
+      "ports": {
+        "I": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "O": {
+          "direction": "output",
+          "bits": [ 3 ]
+        }
+      },
+      "cells": {
+        "$specify$688": {
+          "hide_name": 1,
+          "type": "$specify2",
+          "parameters": {
+            "DST_WIDTH": "00000000000000000000000000000001",
+            "FULL": "0",
+            "SRC_DST_PEN": "0",
+            "SRC_DST_POL": "0",
+            "SRC_WIDTH": "00000000000000000000000000000001",
+            "T_FALL_MAX": "00000000000000000000000000000000",
+            "T_FALL_MIN": "00000000000000000000000000000000",
+            "T_FALL_TYP": "00000000000000000000000000000000",
+            "T_RISE_MAX": "00000000000000000000000000000000",
+            "T_RISE_MIN": "00000000000000000000000000000000",
+            "T_RISE_TYP": "00000000000000000000000000000000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:5.5-5.22"
+          },
+          "port_directions": {
+            "DST": "input",
+            "EN": "input",
+            "SRC": "input"
+          },
+          "connections": {
+            "DST": [ 3 ],
+            "EN": [ "1" ],
+            "SRC": [ 2 ]
+          }
+        }
+      },
+      "netnames": {
+        "I": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:2.29-2.30"
+          }
+        },
+        "O": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:2.39-2.40"
+          }
+        }
+      }
+    },
+    "$__ABC9_SCC_BREAKER": {
+      "attributes": {
+        "dynports": "00000000000000000000000000000001",
+        "blackbox": "00000000000000000000000000000001",
+        "cells_not_processed": "00000000000000000000000000000001",
+        "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:9.1-11.10"
+      },
+      "parameter_default_values": {
+        "WIDTH": "00000000000000000000000000000000"
+      },
+      "ports": {
+        "I": {
+          "direction": "input",
+          "offset": -1,
+          "upto": 1,
+          "bits": [ 2, 3 ]
+        },
+        "O": {
+          "direction": "output",
+          "offset": -1,
+          "upto": 1,
+          "bits": [ 4, 5 ]
+        }
+      },
+      "cells": {
+      },
+      "netnames": {
+        "I": {
+          "hide_name": 0,
+          "bits": [ 2, 3 ],
+          "offset": -1,
+          "upto": 1,
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:9.47-9.48"
+          }
+        },
+        "O": {
+          "hide_name": 0,
+          "bits": [ 4, 5 ],
+          "offset": -1,
+          "upto": 1,
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:9.69-9.70"
+          }
+        }
+      }
+    },
+    "$__DFF_N__$abc9_flop": {
+      "attributes": {
+        "abc9_box_id": "00000000000000000000000000000010",
+        "blackbox": "00000000000000000000000000000001",
+        "abc9_flop": "00000000000000000000000000000001",
+        "abc9_box": "00000000000000000000000000000001",
+        "cells_not_processed": "00000000000000000000000000000001",
+        "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:14.1-20.10"
+      },
+      "ports": {
+        "C": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "D": {
+          "direction": "input",
+          "bits": [ 3 ]
+        },
+        "Q": {
+          "direction": "input",
+          "bits": [ 4 ]
+        },
+        "n1": {
+          "direction": "output",
+          "bits": [ 5 ]
+        }
+      },
+      "cells": {
+      },
+      "netnames": {
+        "C": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:14.36-14.37"
+          }
+        },
+        "D": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:14.39-14.40"
+          }
+        },
+        "Q": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:14.42-14.43"
+          }
+        },
+        "n1": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:14.52-14.54"
+          }
+        }
+      }
+    },
+    "$__DFF_P__$abc9_flop": {
+      "attributes": {
+        "abc9_box_id": "00000000000000000000000000000001",
+        "blackbox": "00000000000000000000000000000001",
+        "abc9_flop": "00000000000000000000000000000001",
+        "abc9_box": "00000000000000000000000000000001",
+        "cells_not_processed": "00000000000000000000000000000001",
+        "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:23.1-29.10"
+      },
+      "ports": {
+        "C": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "D": {
+          "direction": "input",
+          "bits": [ 3 ]
+        },
+        "Q": {
+          "direction": "input",
+          "bits": [ 4 ]
+        },
+        "n1": {
+          "direction": "output",
+          "bits": [ 5 ]
+        }
+      },
+      "cells": {
+      },
+      "netnames": {
+        "C": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:23.36-23.37"
+          }
+        },
+        "D": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:23.39-23.40"
+          }
+        },
+        "Q": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:23.42-23.43"
+          }
+        },
+        "n1": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/abc9_model.v:23.52-23.54"
+          }
+        }
+      }
+    },
     "$__ICE40_CARRY_WRAPPER": {
       "attributes": {
+        "abc9_box_id": "00000000000000000000000000000100",
         "blackbox": "00000000000000000000000000000001",
         "abc9_box": "00000000000000000000000000000001",
         "cells_not_processed": "00000000000000000000000000000001",
@@ -2457,6 +2696,7 @@
     },
     "SB_DFFER": {
       "attributes": {
+        "abc9_box_id": "00000000000000000000000000000101",
         "blackbox": "00000000000000000000000000000001",
         "abc9_box": "00000000000000000000000000000001",
         "cells_not_processed": "00000000000000000000000000000001",
@@ -2527,6 +2767,7 @@
     },
     "SB_DFFES": {
       "attributes": {
+        "abc9_box_id": "00000000000000000000000000000110",
         "blackbox": "00000000000000000000000000000001",
         "abc9_box": "00000000000000000000000000000001",
         "cells_not_processed": "00000000000000000000000000000001",
@@ -2843,6 +3084,7 @@
     },
     "SB_DFFNER": {
       "attributes": {
+        "abc9_box_id": "00000000000000000000000000000111",
         "blackbox": "00000000000000000000000000000001",
         "abc9_box": "00000000000000000000000000000001",
         "cells_not_processed": "00000000000000000000000000000001",
@@ -2913,6 +3155,7 @@
     },
     "SB_DFFNES": {
       "attributes": {
+        "abc9_box_id": "00000000000000000000000000001000",
         "blackbox": "00000000000000000000000000000001",
         "abc9_box": "00000000000000000000000000000001",
         "cells_not_processed": "00000000000000000000000000000001",
@@ -3181,6 +3424,7 @@
     },
     "SB_DFFNS": {
       "attributes": {
+        "abc9_box_id": "00000000000000000000000000001001",
         "blackbox": "00000000000000000000000000000001",
         "abc9_box": "00000000000000000000000000000001",
         "cells_not_processed": "00000000000000000000000000000001",
@@ -3355,6 +3599,7 @@
     },
     "SB_DFFR": {
       "attributes": {
+        "abc9_box_id": "00000000000000000000000000001010",
         "blackbox": "00000000000000000000000000000001",
         "abc9_box": "00000000000000000000000000000001",
         "cells_not_processed": "00000000000000000000000000000001",
@@ -3413,6 +3658,7 @@
     },
     "SB_DFFS": {
       "attributes": {
+        "abc9_box_id": "00000000000000000000000000001011",
         "blackbox": "00000000000000000000000000000001",
         "abc9_box": "00000000000000000000000000000001",
         "cells_not_processed": "00000000000000000000000000000001",
@@ -5105,9 +5351,8 @@
     },
     "SB_LUT4": {
       "attributes": {
-        "blackbox": "00000000000000000000000000000001",
         "abc9_lut": "00000000000000000000000000000001",
-        "cells_not_processed": "00000000000000000000000000000001",
+        "blackbox": "00000000000000000000000000000001",
         "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_sim.v:177.1-225.10"
       },
       "parameter_default_values": {
@@ -9722,123 +9967,574 @@
     "priority_encoder": {
       "attributes": {
         "hdlname": "priority_encoder",
-        "blackbox": "00000000000000000000000000000001",
         "top": "00000000000000000000000000000001",
-        "src": "design_m.v:3.1-19.10"
+        "src": "design_m.v:3.1-109.10"
       },
       "ports": {
-        "b9": {
+        "bits": {
           "direction": "input",
-          "bits": [ 2 ]
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
         },
-        "b8": {
-          "direction": "input",
-          "bits": [ 3 ]
+        "o_bits": {
+          "direction": "output",
+          "bits": [ 12, 13, 14, 15 ]
         },
-        "b7": {
-          "direction": "input",
-          "bits": [ 4 ]
+        "bits_": {
+          "direction": "output",
+          "bits": [ 2, 3, 16, 17, 18, 19, 20, 15 ]
         },
-        "b6": {
-          "direction": "input",
-          "bits": [ 5 ]
+        "im123_": {
+          "direction": "output",
+          "bits": [ 21 ]
         },
-        "b5": {
-          "direction": "input",
-          "bits": [ 6 ]
-        },
-        "b4": {
-          "direction": "input",
-          "bits": [ 7 ]
-        },
-        "b3": {
-          "direction": "input",
-          "bits": [ 8 ]
-        },
-        "b2": {
-          "direction": "input",
-          "bits": [ 9 ]
-        },
-        "b1": {
-          "direction": "input",
-          "bits": [ 10 ]
-        },
-        "b0": {
-          "direction": "input",
-          "bits": [ 11 ]
+        "im567_": {
+          "direction": "output",
+          "bits": [ 22 ]
         }
       },
       "cells": {
+        "bits__SB_LUT4_O": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1110101010101010"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 5 ],
+            "I1": [ 4 ],
+            "I2": [ 3 ],
+            "I3": [ 2 ],
+            "O": [ 17 ]
+          }
+        },
+        "bits__SB_LUT4_O_1": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1111111100001111"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:17.34-18.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 23 ],
+            "I3": [ 24 ],
+            "O": [ 15 ]
+          }
+        },
+        "bits__SB_LUT4_O_2": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1111111111111100"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:22.34-23.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ 4 ],
+            "I2": [ 3 ],
+            "I3": [ 2 ],
+            "O": [ 16 ]
+          }
+        },
+        "bits__SB_LUT4_O_3": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1111111111110000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:17.34-18.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 6 ],
+            "I3": [ 25 ],
+            "O": [ 18 ]
+          }
+        },
+        "bits__SB_LUT4_O_4": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1111111111110000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:17.34-18.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 7 ],
+            "I3": [ 26 ],
+            "O": [ 19 ]
+          }
+        },
+        "bits__SB_LUT4_O_5": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1111110011001100"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:22.34-23.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ 8 ],
+            "I2": [ 7 ],
+            "I3": [ 26 ],
+            "O": [ 20 ]
+          }
+        },
+        "im123__SB_LUT4_I2": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0000111000001011"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 7 ],
+            "I1": [ 6 ],
+            "I2": [ 21 ],
+            "I3": [ 25 ],
+            "O": [ 27 ]
+          }
+        },
+        "im123__SB_LUT4_I2_I3_SB_LUT4_O": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1000000000000000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 5 ],
+            "I1": [ 4 ],
+            "I2": [ 3 ],
+            "I3": [ 2 ],
+            "O": [ 25 ]
+          }
+        },
+        "im123__SB_LUT4_I2_O_SB_LUT4_O": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0000001100000000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:22.34-23.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ 11 ],
+            "I2": [ 10 ],
+            "I3": [ 9 ],
+            "O": [ 28 ]
+          }
+        },
+        "im123__SB_LUT4_I2_O_SB_LUT4_O_1": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1000000000000000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 8 ],
+            "I1": [ 7 ],
+            "I2": [ 6 ],
+            "I3": [ 25 ],
+            "O": [ 24 ]
+          }
+        },
+        "im123__SB_LUT4_I2_O_SB_LUT4_O_2": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0110000010100000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 8 ],
+            "I1": [ 7 ],
+            "I2": [ 23 ],
+            "I3": [ 26 ],
+            "O": [ 29 ]
+          }
+        },
+        "im123__SB_LUT4_O": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0001010101010100"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 5 ],
+            "I1": [ 4 ],
+            "I2": [ 3 ],
+            "I3": [ 2 ],
+            "O": [ 21 ]
+          }
+        },
+        "im567__SB_LUT4_O": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0111000011100000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 8 ],
+            "I1": [ 7 ],
+            "I2": [ 23 ],
+            "I3": [ 26 ],
+            "O": [ 22 ]
+          }
+        },
+        "im567__SB_LUT4_O_I2_SB_LUT4_O": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0000000000000011"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:22.34-23.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ 11 ],
+            "I2": [ 10 ],
+            "I3": [ 9 ],
+            "O": [ 23 ]
+          }
+        },
+        "im567__SB_LUT4_O_I2_SB_LUT4_O_1": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1111000000000000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:17.34-18.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 25 ],
+            "I3": [ 6 ],
+            "O": [ 26 ]
+          }
+        },
+        "o_bits_SB_LUT4_O": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1111111110001111"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 28 ],
+            "I1": [ 24 ],
+            "I2": [ 27 ],
+            "I3": [ 29 ],
+            "O": [ 12 ]
+          }
+        },
+        "o_bits_SB_LUT4_O_1": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1111111111110000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:17.34-18.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 21 ],
+            "I3": [ 22 ],
+            "O": [ 13 ]
+          }
+        },
+        "o_bits_SB_LUT4_O_2": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0000000010001100"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 22 ],
+            "I1": [ 23 ],
+            "I2": [ 30 ],
+            "I3": [ 24 ],
+            "O": [ 14 ]
+          }
+        },
+        "o_bits_SB_LUT4_O_2_I2_SB_LUT4_O": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0000000000001111"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:17.34-18.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 6 ],
+            "I3": [ 17 ],
+            "O": [ 30 ]
+          }
+        }
       },
       "netnames": {
-        "b0": {
+        "bits": {
           "hide_name": 0,
-          "bits": [ 11 ],
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ],
           "attributes": {
-            "src": "design_m.v:13.16-13.18"
+            "src": "design_m.v:4.21-4.25"
           }
         },
-        "b1": {
+        "bits_": {
           "hide_name": 0,
-          "bits": [ 10 ],
+          "bits": [ 2, 3, 16, 17, 18, 19, 20, 15 ],
           "attributes": {
-            "src": "design_m.v:12.16-12.18"
+            "src": "design_m.v:6.22-6.27"
           }
         },
-        "b2": {
+        "im123_": {
           "hide_name": 0,
-          "bits": [ 9 ],
+          "bits": [ 21 ],
           "attributes": {
-            "src": "design_m.v:11.16-11.18"
+            "src": "design_m.v:7.17-7.23"
           }
         },
-        "b3": {
+        "im123__SB_LUT4_I2_I3": {
           "hide_name": 0,
-          "bits": [ 8 ],
+          "bits": [ 7, 6, 21, 25 ],
           "attributes": {
-            "src": "design_m.v:10.16-10.18"
+            "force_downto": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:6.21-6.22"
           }
         },
-        "b4": {
+        "im123__SB_LUT4_I2_O": {
           "hide_name": 0,
-          "bits": [ 7 ],
+          "bits": [ 28, 24, 27, 29 ],
           "attributes": {
-            "src": "design_m.v:9.16-9.18"
+            "force_downto": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:6.21-6.22"
           }
         },
-        "b5": {
+        "im567_": {
           "hide_name": 0,
-          "bits": [ 6 ],
+          "bits": [ 22 ],
           "attributes": {
-            "src": "design_m.v:8.16-8.18"
+            "src": "design_m.v:8.17-8.23"
           }
         },
-        "b6": {
+        "im567__SB_LUT4_O_I2": {
           "hide_name": 0,
-          "bits": [ 5 ],
+          "bits": [ 8, 7, 23, 26 ],
           "attributes": {
-            "src": "design_m.v:7.16-7.18"
+            "force_downto": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:6.21-6.22"
           }
         },
-        "b7": {
+        "o_bits": {
           "hide_name": 0,
-          "bits": [ 4 ],
+          "bits": [ 12, 13, 14, 15 ],
           "attributes": {
-            "src": "design_m.v:6.16-6.18"
+            "src": "design_m.v:5.22-5.28"
           }
         },
-        "b8": {
+        "o_bits_SB_LUT4_O_2_I2": {
           "hide_name": 0,
-          "bits": [ 3 ],
+          "bits": [ 22, 23, 30, 24 ],
           "attributes": {
-            "src": "design_m.v:5.16-5.18"
-          }
-        },
-        "b9": {
-          "hide_name": 0,
-          "bits": [ 2 ],
-          "attributes": {
-            "src": "design_m.v:4.16-4.18"
+            "force_downto": "00000000000000000000000000000001",
+            "src": "C:\\ApioData\\packages\\OSS-CA~1\\bin\\../share/yosys/ice40/cells_map.v:6.21-6.22"
           }
         }
       }
