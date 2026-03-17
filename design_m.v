@@ -54,10 +54,10 @@ or o_edge7(bits_[7], im7[2], bits[7], bits[8], bits[9]);
 //buffers for bits 0 
 buf buffer0(bits_[0], bits[0]);
 
-nand(im1[0],bits[3], bits[2], bits[1], bits[0]);
-nand(im1[1],bits[4], bits[5], bits[6], bits[7]);
-or(im1[2],bits[8], bits[9]);
-nor(e_im1, im1[0], im1[1], im1[2]);
+nor(im1[0],bits[3], bits[2], bits[1], bits[0]);
+nor(im1[1],bits[4], bits[5], bits[6], bits[7]);
+nor(im1[2],bits[8], bits[9]);
+and(e_im1, im1[0], im1[1], im1[2]);
 
 
 
@@ -79,8 +79,8 @@ and and23(bit0[0], bits_[2], n_im3_);
 and and45(bit0[1], bits_[4], n_im5_);
 and and67(bit0[2], bits_[6], n_im7_);
 
-or o1(im_o1, bit0[0], bit0[1], bit0[2]);
-or(o_bits[0], im_o1, e_im1);
+or o1(o_bits[0], bit0[0], bit0[1], bit0[2], e_im1);
+
 
 //bit 1 
 //intermediate wires
