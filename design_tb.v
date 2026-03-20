@@ -3,32 +3,21 @@
 
 //when making a testbech inputs = registers;
 module tb_design;
-reg[9:0] bits;
-wire[3:0] o_bits;
-wire[7:0] bits_;
-wire one;
-wire two;
+reg[15:0] i_bits;
+wire[15:0] o_bits;
+reg[15:0] gen_bits;
 
-priority_encoder uut(.bits(bits), .o_bits(o_bits), .bits_(bits_), .im123_(one), .im567_(two));
+
+k_bit_adder uut(.i_bits(i_bits), .Gen(gen_bits),.o_bits(o_bits));
 initial begin
 
-$display("Time\tinput_bits\toutput_bits\titermediate_bits\tim");
-$monitor("%0t\t%b\t%b\t\t%b\t%b\t%b", $time, bits, o_bits, bits_, one, two);
+$display("Time\tinput_bits\toutput_bits\tgen_bits");
+$monitor("%0t\t%h\t\t%b\t\t%b", $time, i_bits, o_bits, gen_bits);
 
 //test some edgecases
 
-bits = 10'b0000000000; #10;
-bits = 10'b0000000001; #10;
-bits = 10'b0000000010; #10;
-bits = 10'b0000000100; #10;
-bits = 10'b0000001000; #10;
-bits = 10'b0000010000; #10;
-bits = 10'b0000100000; #10;
-bits = 10'b0001000000; #10;
-bits = 10'b0010000000; #10;
-bits = 10'b0100000000; #10;
-bits = 10'b1000000000; #10;
-
+i_bits = 16'hF001; #10;
+i_bits = 16'hFFFF; #10;
 
 
 

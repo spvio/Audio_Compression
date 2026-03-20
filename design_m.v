@@ -98,7 +98,6 @@ nor(im56_, bits_[5], bits_[6]);
 nor(im567_, im56_, bits_[7]);
 or (o_bits[1], im123_, im567_);
 
-//bit 2
 //intermediate wires
 wire im3456_;
 nor(im3456_ ,bits_[3], bits_[4], bits_[5], bits_[6]);
@@ -108,3 +107,6 @@ nor(o_bits[2] ,im3456_, bits_[7]);
 buf(o_bits[3], bits_[7]);
 
 endmodule
+
+//be
+//bit 2
