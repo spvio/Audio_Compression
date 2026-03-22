@@ -39,7 +39,7 @@ initial begin
 
     abs_val = 16'h000F; shift_b = 3 'b001;  #10;
     abs_val = 16'h0FF0; shift_b = 3'b001; #10;
-    abs_val = 16'hF100; shift_b = 3'b111; #10;
+    abs_val = 16'hFFC0; shift_b = 3'b101; #10;
     $finish;
 end
 

@@ -1,112 +1,167 @@
 //personal encoder
 
-module priority_encoder(
-    input wire[9:0] bits,
-    output wire[3:0] o_bits,
-    output wire[7:0] bits_,
-    output wire im123_,
-    output wire im567_
+module compression(
+    input i_clk,
+    input c14,
+    //input wire[15:0] i_bits,
+    output wire[7:0] o_bits
 );
+//intermdiate wires 
+wire ack;
+wire[15:0] k_add_out;
+wire[3:0] p_out_;
+wire[3:0]  lsls_out_;
 
-// b'
-//wire bits_[7:0];
-//wire[7:0] bits_;
-//intermediate wires
-
-wire[2:0] im1;
-wire      e_im1;
-wire im2;
-wire im3;
-wire im4;
-wire[2:0] im5;
-wire[2:0] im6;
-wire[2:0] im7;
-
-//phase 1: account for edgecases
-
-or(bits_[1],bits[1], bits[0]);
-
-and edge2(im2,bits[1], bits[0]);
-or  o_edge2 (bits_[2], im2, bits[2]);
-
-and edge3(im3, bits[2], bits[1], bits[0]);
-or o_edge3 (bits_[3],im3, bits[3]);
-
-and edge41(im4, bits[3], bits[2], bits[1], bits[0]);
-or  o_edge4(bits_[4], im4, bits[4]);
-
-and edge51(im5[0], bits[2], bits[1], bits[0]);
-and edge52(im5[1], bits[3], bits[4]);
-and edge53(im5[2], im5[0], im5[1]);
-or o_edge5(bits_[5], im5[2], bits[5]);
-
-
-and edge61(im6[0], bits[2], bits[1], bits[0]);
-and edge62(im6[1], bits[3], bits[4], bits[5]);
-and edge63(im6[2] ,im6[0], im6[1]);
-or o_edge6(bits_[6], im6[2], bits[6]);
-
-and edge71(im7[0], bits[3], bits[2], bits[1], bits[0]);
-and edge72(im7[1], bits[4], bits[5], bits[6]);
-and edge73(im7[2], im7[0], im7[1]);
-or o_edge7(bits_[7], im7[2], bits[7], bits[8], bits[9]);
-
-//buffers for bits 0 
-buf buffer0(bits_[0], bits[0]);
-
-nor(im1[0],bits[3], bits[2], bits[1], bits[0]);
-nor(im1[1],bits[4], bits[5], bits[6], bits[7]);
-nor(im1[2],bits[8], bits[9]);
-and(e_im1, im1[0], im1[1], im1[2]);
+//intermediate registers
+reg pcm_data[15:0];
+reg[15:0] r_add_in;
+reg[15:0] r_add_out;
+reg[3:0]  r_p_out;
+reg[3:0]  r_lsls_out;
+reg[7:0] r_out;
 
 
 
-
-//bit 0(aka odd or even)
-//intermediate gates
-wire im_o1;
-wire n_im3_;
-wire n_im5_;
-wire n_im7_;
-wire[3:0] bit0;
-
-not not3(n_im3_, bits_[3]);
-not not5(n_im5_, bits_[5]);
-not not7(n_im7_, bits_[7]);
-
-//nor     (bit0[3], bits_[0], bits_[1]);
-and and23(bit0[0], bits_[2], n_im3_);
-and and45(bit0[1], bits_[4], n_im5_);
-and and67(bit0[2], bits_[6], n_im7_);
-
-or o1(o_bits[0], bit0[0], bit0[1], bit0[2], e_im1);
+//instantiatiate modules & all are combinational logic(pipelining into '4' stages)
+k_bit_adder k_add_inst(.i_bits(k_add_in), .o_bits(k_add_out));
+priority_encoder p_encoder_inst(.i_bits(add_out[14:5]), .o_bits(p_out_));
+lsls_8  lsls_inst(.i_bits(k_add_out), .shift_bits(p_out), .o_bits(lsls_out_));
 
 
-//bit 1 
-//intermediate wires
-wire im12_;
-//wire im123_;
-wire im56_;
-//wire im567_;
+//with clock
+uart_tx uart_tx_inst(.C14(c14), .i_clk(i_clk), .ack(ack), .data(pcm_data));
 
-nor(im12_, bits_[1], bits_[2]);
-nor(im123_, im12_, bits_[3]);
+reg[2:0] latency_c = 0;
+reg[1:0] state = 2'b00;
+parameter idle = 1'b00;
+parameter start = 1'b01;
+always @(posedge i_clk) begin
+    case(state) 
+        idle: begin 
+            if(r_ack == 1'b1) state <= start;
+        end
 
+        start: begin //assume all combinational takes one clock cycle..(latency = 3)
+            r_add_in <= pcm_data;
+            r_add_out <= k_add_out;
+            r_p_out <= p_out_;
+            r_lsls_out <= lsls_out_;
 
+            if(latency_c != 4) latency_c = latency + 1;
+            else begin 
+                latnecy_c = 0;
+                r_out = ~{pcm_data[15], p_out, lsls_out};
+            end
+            if(r_ack == 1'b0) state <= idle;
+        end
 
-nor(im56_, bits_[5], bits_[6]);
-nor(im567_, im56_, bits_[7]);
-or (o_bits[1], im123_, im567_);
+    endcase
 
-//intermediate wires
-wire im3456_;
-nor(im3456_ ,bits_[3], bits_[4], bits_[5], bits_[6]);
-nor(o_bits[2] ,im3456_, bits_[7]);
+    
+end
+assign add_out = r_add_out;
+assign p_out   = r_p_out;
+assign lsls_out = r_lsls_out;
+//output:
+assign o_bits = r_out;
 
-//bit 3;
-buf(o_bits[3], bits_[7]);
 
 endmodule
 
-//be
-//bit 2
+
+//zync-700 runs at 100MGHz, uart_bits
+//baud rate: 115200, 8 bits : need to wait 868 cycles,
+//I only care about C14(TX)
+module uart_tx(
+    input C14,
+    input i_clk,
+    output wire ack,
+    output reg[15:0] data,
+);
+
+reg r_ack = 0;
+reg[1:0] state = 0;
+reg[9:0] counter = 0;
+reg[1:0] part = 0;
+reg[2:0] index= 0;
+parameter idle   = 2'b00;
+parameter start  = 2'b01;
+parameter sample = 2'b10;
+parameter stop   = 2'b11;
+
+
+
+always @(posedge i_clk) begin 
+    case(state)
+
+    idle:begin 
+        if(C14 == 1'b0) state <= start;
+    end
+
+    //goal sample in the middle
+    start:begin 
+        if(counter != 434) counter <= counter + 1;
+        else begin 
+            counter <= 0;
+            state <= sample;
+            r_ack <= 1'b0;  //new sample starting so have to restart;
+        end
+    end
+
+    sample: begin 
+        if(counter != 868) begin 
+            counter <= counter + 1;
+        end
+        
+        //sampling part
+        else if(parts != 2) begin 
+            data[index] <= C14;
+            index   <= index + 1;
+            counter <= 0;
+        end
+        else begin
+            state <= stop;
+            parts <= parts + 1;
+            
+        end
+    
+    end
+
+
+    stop: begin
+        if(C14 == 1'b1) state <= idle;
+        if(parts == 2) begin 
+        parts <= 0;
+        index <= 0;
+        r_ack <= 1'b1;  //
+        end
+        counter <= 0;
+    end
+
+    endcase
+
+
+end
+
+assign ack = r_ack; //register is ready to read
+
+endmodule
+
+
+module priority_encoder(
+    input wire[9:0] i_bits,
+    output wire[2:0] o_bits,
+    //outputwire[7:0] bits_,
+    //output wire im123_,
+   // output wire im567_
+);
+
+reg[2:0] r_bits;
+always@(*) begin 
+    r_bits[0] = ((i_bits[0] | i_bits[1]) & ~(i_bits[2])) | (i_bits[3] & ~(i_bits[4])) | (i_bits[5] & ~i_bits[6]) | i_bits[7:9]; 
+    r_bits[1] = ((i_bits[2] | i_bits[3]) & ~(i_bits[4]  | i_bits[5])) | (i_bits[7:9]);
+    r_bits[2] = |(i_bits[4:9]);
+
+end
+assign o_bits = r_bits;
+endmodule
