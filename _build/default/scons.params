@@ -1,4 +1,4 @@
-timestamp: "21205617771"
+timestamp: "27153711893"
 arch: ICE40
 fpga_info {
   fpga_id: "ice40hx1k-vq100"
@@ -8,11 +8,6 @@ fpga_info {
     type: "hx1k"
     pack: "vq100"
   }
-}
-verbosity {
-  all: false
-  synth: false
-  pnr: false
 }
 environment {
   platform_id: "windows-amd64"
@@ -27,4 +22,10 @@ apio_env_params {
   env_name: "default"
   board_id: "go-board"
   top_module: "priority_encoder"
+}
+target {
+  sim {
+    force_sim: false
+    no_gtkwave: true
+  }
 }
